@@ -1,0 +1,17 @@
+server:
+  name: server-service
+  image:
+    repository: gokulmylsami/full-stack-backend
+    tag: latest
+  replicas: 3
+  port: 8000
+  type: LoadBalancer
+
+client:
+  name: client-service
+  image:
+    repository: gokulmylsami/full-stack-frontend
+    tag: latest
+  replicas: 1
+  port: 80
+  type: NodePort

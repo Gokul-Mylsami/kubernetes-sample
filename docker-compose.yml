@@ -1,0 +1,21 @@
+version: "3"
+services:
+  backend:
+    build: ./server
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - MONGO_URI=mongodb://db:27017
+  frontend:
+    build: ./client
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_BACKEND_URL=http://backend/api/v1/
+    depends_on:
+      - backend
+  db:
+    image: mongo:4.0-xenial
+    ports:
+      - 27017:27017
